@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>Shopping Site</title>
+<head>
+  <style type="text/css">
+
+
+tr{
+  border: 2px solid black;
+  width: 50%
+}
+td{
+  width: 50%;
+
+}
+table{
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+body{
+  background-color: #29293d;
+}
+</style>
+</head>
+<link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous"
+/>
+<link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<link rel="stylesheet" href="./style.css" />
+<body>
+<header th:replace="header :: header1"></header>
+<div class="container">
+</table>
+    <table class = "table-dark" th:each="mv:${movies.items}">
+      <a th:href="@{/home/{id}(id=${mv.id})}" href="#">
+      <tr th:onclick="window.location='@{/home/{id}(id=${mv.id})}'">
+        <td rowspan="4">
+          <img th:src="${mv.image}" height="200" width="200" src = "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX128_CR0,3,128,176_AL_.jpg">
+        </td>
+        <td>
+           <h4><span th:text="${mv.fullTitle}">Title</span></h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span th:text="${mv.imDbRating}">4.2</span>
+          <i style="font-size: 15px" class="fa">&#xf005;</i></br>
+        </td>
+      </tr>
+        <tr>
+          <td><span th:text="${mv.crew}">Crew</span></td>
+        </tr>
+      </a>
+    </table>
+</div>
+<!--
+<div class="row my-3 mx-auto py-auto">
+    <table style="width:600px height:200px">
+    <tr th:each="mv,i_mv:${movies.items}" scope="row" class="row my-3 mx-auto py-auto">
+      <a th:href="@{/home/{id}(id=${mv.id})}">
+        <th scope="col" class="row my-3 mx-auto py-auto">
+          <div class="row justify-content-md-center">
+            <div>
+              <div class="column">
+                <img class="img-thumbnail" th:src="${mv.image}" height="200" width="200">
+
+              </div>
+              <div class="column">
+                <h2><span th:text = "${mv.fullTitle}">Title</span><br></h2>
+                <span><b>Rating: </b></span>
+                <span th:text = "${mv.imDbRating}">Rating</span>
+                <i style="font-size: 15px" class="fa">&#xf005;</i></br>
+                <span th:text="${mv.crew}"></span>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+
+        </th>
+      </a>
+
+    </tr>
+    </table>
+
+  </div>
+</div>
+-->
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"
+></script>
+</body>
+</html>
